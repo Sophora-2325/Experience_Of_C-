@@ -82,3 +82,26 @@ public:
         return l3->next; 
     }
 };
+
+
+双指针+hash集合
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        unordered_set<char> charSet;  // 记录当前窗口中的字符
+        int left = 0;                 // 窗口左边界
+        int maxLen = 0;               // 最长子串长度
+        
+        for (int right = 0; right < s.length(); right++) {
+            // 如果右指针字符已存在于集合中，移动左指针直到移除重复字符
+            while (charSet.find(s[right]) != charSet.end()) {
+                charSet.erase(s[left]);
+                left++;
+            }
+            // 将当前字符加入集合，更新最大长度
+            charSet.insert(s[right]);
+            maxLen = max(maxLen, right - left + 1);
+        }
+        return maxLen;
+    }
+};
