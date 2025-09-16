@@ -1,2 +1,17 @@
 a.count( target - nums[i]>0)，作用为计算列表 a 中是否存在值为 target - nums[i] 的元素
 a.count() 计算出现次数
+
+
+hash表只是并没有什么稀奇的，就是单纯的map利用，这个东西利用了map中键的唯一性与值的可变性来定位某个数值。
+
+map<int,int>a;
+vector<int>b(2,-1);
+for(int i=0;i<nums.size();i++){
+  a.insert(map<int,int>::value_type(nums[i],i));
+  for(int i=0;i<nums.size();i++){
+    if(a.count(target-nums[i]>0&&a[target-nums[i]!=i])){
+        b[0]=target-nums[i];
+        b[1]=i;
+    }
+  }
+}
