@@ -1,0 +1,2 @@
+a.count( target - nums[i]>0)，作用为计算列表 a 中是否存在值为 target - nums[i] 的元素
+a.count() 计算出现次数
