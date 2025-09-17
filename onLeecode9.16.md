@@ -1,31 +1,26 @@
-a.count( target - nums[i]>0)，作用为计算列表 a 中是否存在值为 target - nums[i] 的元素
-a.count() 计算出现次数
-
-
-hash表只是并没有什么稀奇的，就是单纯的map,unoredered_map,set,unoredered_set利用，这个东西利用了map中键的唯一性与值的可变性来定位某个数值。
-
-map<int,int>a;
-vector<int>b(2,-1);
-for(int i=0;i<nums.size();i++){
-  a.insert(map<int,int>::value_type(nums[i],i));
-  for(int i=0;i<nums.size();i++){
-    if(a.count(target-nums[i]>0&&a[target-nums[i]!=i])){
+## 一、`hash表`没有什么稀奇的，就是单纯的`map`,`unoredered_map`,`set`,`unoredered_set`利用，这个东西利用了map中键的唯一性与值的可变性来`定位`某个数值。
+```
+    map<int,int>a;
+    vector<int>b(2,-1);
+    for(int i=0;i<nums.size();i++){
+    a.insert(map<int,int>::value_type(nums[i],i));
+    for(int i=0;i<nums.size();i++){
+    if(`a.count(target-nums[i]>0`&&`a[target-nums[i]!=i]`)){
         b[0]=target-nums[i];
         b[1]=i;
     }
   }
 }
-
-
-链表也没啥大不了的，就是单纯对指针的使用，而且ListNode还是用struct结构体做出来的，这些数据结构很多都是由简单的数组合出来的
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */
+//`a.count( target - nums[i]>0)`作用为计算列表 a 中是否存在值为 target - nums[i] 的元素。其中的`a.count()`计算出现次数
+```
+# 二、链表也没啥大不了的，就是单纯对指针的使用，而且ListNode还是用struct结构体做出来的，这些数据结构很多都是由简单的数组合出来的
+```
+Definition for singly-linked list.
+struct ListNode {
+      int val;
+      ListNode *next;
+      ListNode(int x) : val(x), next(NULL) {}
+  };
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
@@ -82,9 +77,10 @@ public:
         return l3->next; 
     }
 };
+```
 
-
-双指针+hash集合
+# 三、双指针+hash集合
+```
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
@@ -105,7 +101,10 @@ public:
         return maxLen;
     }
 };
-更快更好的版本
+```
+
+```
+//更小更快的一个版本
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
@@ -113,7 +112,6 @@ public:
         int maxL = 0, left = 0;
         for(int i = 0; i < s.length(); i++) {
             if(st.count(s[i])) {
-    
                 left = max(left, st[s[i]] + 1);
             }
             maxL = max(maxL, i - left + 1);
@@ -122,3 +120,4 @@ public:
         return maxL;
     }
 };
+```
