@@ -2,7 +2,7 @@ a.count( target - nums[i]>0)，作用为计算列表 a 中是否存在值为 tar
 a.count() 计算出现次数
 
 
-hash表只是并没有什么稀奇的，就是单纯的map利用，这个东西利用了map中键的唯一性与值的可变性来定位某个数值。
+hash表只是并没有什么稀奇的，就是单纯的map,unoredered_map,set,unoredered_set利用，这个东西利用了map中键的唯一性与值的可变性来定位某个数值。
 
 map<int,int>a;
 vector<int>b(2,-1);
