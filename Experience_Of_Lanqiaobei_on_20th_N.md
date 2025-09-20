@@ -8,32 +8,33 @@ ___
 ```
 #include<iostream>
 #include<list>
-#include<unordered_map>
+#include<unordered_map>//无序哈希表，查找效率（时间复杂度是O（1））
 
 using namespace std;
 
 int n1, n2, m;
 list<int>q1, q2;
-unordered_map<int, pair<int, list<int>::iterator>>mp;//又出现一种hash表
+unordered_map<int, pair<int, list<int>::iterator>>mp;//迭代器（Iterator） 是一种类似指针的对象
+
 int main() {
 	cin >> n1 >> n2 >> m;
+
 	while (m--) {
 		int x;
 		cin >> x;
-		if (!mp.count(x)) {//!mp.count(x) 确实涉及隐式类型转换
+		if (!mp.count(x)) {
 			q2.push_front(x);
 			mp[x] = {2, q2.begin()};
 		} else {
 			int id = mp[x].first;
 			auto it = mp[x].second;
 			mp.erase(x);
-			if (id == 1)q1.erase(it);
+			if (id == 1) q1.erase(it);//
 			else q2.erase(it);
 			q1.push_front(x);
-			mp[x] = {1, q1.begin()};
 		}
 		if (q1.size() > n1) {
-			x = *q1.rbegin();//q1.rbegin()返回一个迭代器，可以理解为一个数组的开头
+			x = *q1.rbegin();
 			q1.pop_back();
 			mp[x] = {2, q2.begin()};
 		}
