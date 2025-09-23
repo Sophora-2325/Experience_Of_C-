@@ -57,4 +57,4 @@ inline bool areEqual(ll a, ll b, ll c) {
 	if (areEqual(A, B, C)) break;
 ```
 ### 两部分组合起来就可以将A=B=C的情况直接输出，尽可能减少运行时间
-
+![最终版](Second.png "最终版")
