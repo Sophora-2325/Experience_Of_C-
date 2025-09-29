@@ -1,7 +1,5 @@
 #  Z 字形变换
 
-![Uploading 696d4ce97f1539f10d12a85115e80f57.png…]()
-
 ```
 class Solution {
 public:
